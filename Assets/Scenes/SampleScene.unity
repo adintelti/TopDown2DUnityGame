@@ -22704,7 +22704,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7323796957752762875, guid: 4e51e5739923c9b43979e7ae638fe456, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.8375912
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7323796957752762875, guid: 4e51e5739923c9b43979e7ae638fe456, type: 3}
       propertyPath: m_LocalRotation.x
@@ -28468,7 +28468,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7323796957752762875, guid: 4e51e5739923c9b43979e7ae638fe456, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.8375912
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7323796957752762875, guid: 4e51e5739923c9b43979e7ae638fe456, type: 3}
       propertyPath: m_LocalRotation.x
@@ -29734,7 +29734,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7323796957752762875, guid: 4e51e5739923c9b43979e7ae638fe456, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.8375912
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7323796957752762875, guid: 4e51e5739923c9b43979e7ae638fe456, type: 3}
       propertyPath: m_LocalRotation.x
@@ -34923,10 +34923,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 382052819, guid: 4e51e5739923c9b43979e7ae638fe456, type: 3}
-      propertyPath: maxWoodDrop
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 3863917982478273131, guid: 4e51e5739923c9b43979e7ae638fe456, type: 3}
       propertyPath: m_Name
       value: Tree
@@ -35101,6 +35097,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4877198714051344932, guid: cc679282794a6324da3e71922f1435b4, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6992163753762054178, guid: cc679282794a6324da3e71922f1435b4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.03
