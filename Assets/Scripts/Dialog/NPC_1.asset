@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef428d0d559ac3b44bf887012ecd3191, type: 3}
+  m_Name: NPC_1
+  m_EditorClassIdentifier: 
+  actor: {fileID: 8922517919746335057, guid: 3673638b85e8ea344bae6f9bf9ad6306, type: 3}
+  speakerSprite: {fileID: 21300000, guid: 1ef28cbd306e936488781f1b40825669, type: 3}
+  sentence: Apresentacao
+  dialogues:
+  - ActorName: Nina
+    profile: {fileID: 0}
+    sentence:
+      portuguese: "Ol\xE1 hero\xED, bem vindo ao mundo!"
+      english: Hello hero, Welcome to world!
+      spanish: "Hola h\xE9roe, \xA1bienvenido al mundo!"
+  - ActorName: Nina
+    profile: {fileID: 0}
+    sentence:
+      portuguese: "Voc\xEA esta feliz de estar aqui?"
+      english: Are you happy to be here?
+      spanish: "\xBFEst\xE1s contento de estar aqu\xED?"
