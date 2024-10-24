@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -76,6 +77,11 @@ public class Player : MonoBehaviour
             OnCutting();
             OnDig();
             OnWatering();
+        }
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            SceneManager.LoadScene("Test");
         }
     }
 

@@ -5091,7 +5091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 515813db95454754c88516a582cf94c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  treeHealth: 5
+  treeHealth: 3
   anim: {fileID: 7423647698413115750}
   woodPrefab: {fileID: 8655126066960030561, guid: cc679282794a6324da3e71922f1435b4, type: 3}
   maxWoodDrop: 5
