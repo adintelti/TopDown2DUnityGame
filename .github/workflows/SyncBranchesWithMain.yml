@@ -12,9 +12,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Update branch dev with main
+      - name: Delete dev branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git fetch origin
-          git checkout dev
-          git merge origin/main
-          git push origin dev
+          BRANCH_NAME="dev"
+          if git show-ref --verify --quiet refs/heads/$BRANCH_NAME; then
+            echo "Deleting branch $BRANCH_NAME..."
+            git push origin --delete $BRANCH_NAME
+          else
+            echo "Branch $BRANCH_NAME does not exist, skipping deletion."
+          fi
