@@ -8,18 +8,23 @@ on:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Check out the repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Faz o checkout completo, incluindo referências de outras branches remotas
 
       - name: Delete dev branch
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           BRANCH_NAME="dev"
-          if git show-ref --verify --quiet refs/heads/$BRANCH_NAME; then
+          # Atualiza as referências remotas para garantir que a branch dev seja identificada
+          git fetch origin
+          if git ls-remote --exit-code --heads origin $BRANCH_NAME; then
             echo "Deleting branch $BRANCH_NAME..."
             git push origin --delete $BRANCH_NAME
           else
-            echo "Branch $BRANCH_NAME does not exist, skipping deletion."
+            echo "Branch $BRANCH_NAME does not exist on remote, skipping deletion."
           fi
