@@ -1,4 +1,4 @@
-name: Sync Branches with Main
+name: Delete Dev Branch After Merge
 
 on:
   push:
@@ -6,25 +6,24 @@ on:
       - main
 
 jobs:
-  sync:
+  delete_dev_branch:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     steps:
       - name: Check out the repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Faz o checkout completo, incluindo referências de outras branches remotas
+          fetch-depth: 0
 
       - name: Delete dev branch
         env:
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}  # Usando o PAT
         run: |
           BRANCH_NAME="dev"
-          # Atualiza as referências remotas para garantir que a branch dev seja identificada
           git fetch origin
           if git ls-remote --exit-code --heads origin $BRANCH_NAME; then
             echo "Deleting branch $BRANCH_NAME..."
-            git push origin --delete $BRANCH_NAME
+            git push https://$PERSONAL_ACCESS_TOKEN@github.com/adintelti/TopDown2DUnityGame.git --delete $BRANCH_NAME
           else
             echo "Branch $BRANCH_NAME does not exist on remote, skipping deletion."
           fi
