@@ -77,7 +77,7 @@ MonoBehaviour:
   _carrotSFX: {fileID: 8300000, guid: 2231142b09e66a340a598bf74810f12c, type: 3}
   spriteRenderer: {fileID: 2277022341673686549}
   hole: {fileID: -1108098455314781316, guid: 8bec5e8eb8dcf2a46a5b1070c1b7c720, type: 3}
-  carrot: {fileID: 950061346773986722, guid: 8bec5e8eb8dcf2a46a5b1070c1b7c720, type: 3}
+  carrot: {fileID: 4398868931401393710, guid: 8bec5e8eb8dcf2a46a5b1070c1b7c720, type: 3}
   digAmount: 4
   waterAmount: 2
   detectingWater: 0
