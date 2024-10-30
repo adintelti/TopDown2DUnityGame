@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: NPC_1
   m_EditorClassIdentifier: 
   actor: {fileID: 8922517919746335057, guid: 3673638b85e8ea344bae6f9bf9ad6306, type: 3}
-  speakerSprite: {fileID: 21300000, guid: 1ef28cbd306e936488781f1b40825669, type: 3}
-  sentence: Apresentacao
+  speakerSprite: {fileID: 0}
+  sentence: 
   dialogues:
   - ActorName: Nina
     profile: {fileID: 0}
@@ -28,3 +28,15 @@ MonoBehaviour:
       portuguese: "Voc\xEA esta feliz de estar aqui?"
       english: Are you happy to be here?
       spanish: "\xBFEst\xE1s contento de estar aqu\xED?"
+  - ActorName: Nina
+    profile: {fileID: 0}
+    sentence:
+      portuguese: "Voc\xEA esta na casa do Vando e do Alex?"
+      english: Are you in Vando and Alex house now?
+      spanish: "\xBFEst\xE1s en la casa de Vando y Alex ahora?"
+  - ActorName: Nina
+    profile: {fileID: 21300000, guid: 1ef28cbd306e936488781f1b40825669, type: 3}
+    sentence:
+      portuguese: Espero que se divirtam
+      english: I hope you guys have fun!
+      spanish: "\xA1Espero que se diviertan!"
