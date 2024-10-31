@@ -27,6 +27,10 @@ public class DialogueControl : MonoBehaviour
     private bool _isShowing; //se a janela esta visível
     private int index; //index das sentenças
     private string[] sentences;
+    private string[] _currentActorName;
+    private Sprite[] _actorSprite;
+
+    private Player _player;
 
     public static DialogueControl instance;
 
@@ -39,12 +43,7 @@ public class DialogueControl : MonoBehaviour
 
     void Start()
     {
-
-    }
-
-    void Update()
-    {
-        
+        _player = FindObjectOfType<Player>();
     }
 
     IEnumerator TypeSentence()
@@ -64,29 +63,38 @@ public class DialogueControl : MonoBehaviour
             if(index < sentences.Length - 1)
             {
                 index++;
+                profileSprite.sprite = _actorSprite[index];
+                actorNameText.text = _currentActorName[index];
                 speechText.text = "";
                 StartCoroutine(TypeSentence());
             }
             else
             {
                 speechText.text = "";
+                actorNameText.text = "";
                 index = 0;
                 dialogueObj.SetActive(false);
                 sentences = null;
                 _isShowing = false;
+                _player.isPaused = false;
             }
         }
     }
 
     //Chama a fala do NPC
-    public void Speech(string[] txt)
+    public void Speech(string[] txt, string[] actorName, Sprite[] actorProfile)
     {
         if(!_isShowing)
         {
            dialogueObj.SetActive(true);
            sentences = txt;
+           _actorSprite = actorProfile;
+           _currentActorName = actorName;
+            profileSprite.sprite = _actorSprite[index];
+            actorNameText.text = _currentActorName[index];
            StartCoroutine(TypeSentence()); 
            _isShowing = true;
+           _player.isPaused = true;
         }
     }
 }
