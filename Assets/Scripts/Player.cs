@@ -81,7 +81,7 @@ public class Player : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene("Test");
+            SceneManager.LoadScene("TestSecondScene");
         }
     }
 
@@ -115,6 +115,10 @@ public class Player : MonoBehaviour
                 playerItems.currentWater -= 0.01f;
             }
         }
+        else
+        {
+            _isWatering = false;
+        }
     }
 
     private void OnDig()
@@ -131,6 +135,10 @@ public class Player : MonoBehaviour
                 speed = initialSpeed;
             }
         }
+        else
+        {
+            _isDigging = false;
+        }
     }
 
     private void OnCutting()
@@ -146,6 +154,10 @@ public class Player : MonoBehaviour
                 _isCutting = false;
                 speed = initialSpeed;
             }
+        }
+        else
+        {
+            _isCutting = false;
         }
     }
 

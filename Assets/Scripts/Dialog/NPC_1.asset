@@ -17,25 +17,25 @@ MonoBehaviour:
   sentence: 
   dialogues:
   - ActorName: Nina
-    profile: {fileID: 0}
+    profile: {fileID: 21300000, guid: 54b250adb6665f541a0de787cacf8cf8, type: 3}
     sentence:
       portuguese: "Ol\xE1 hero\xED, bem vindo ao mundo!"
       english: Hello hero, Welcome to world!
       spanish: "Hola h\xE9roe, \xA1bienvenido al mundo!"
   - ActorName: Nina
-    profile: {fileID: 0}
+    profile: {fileID: 21300000, guid: 54b250adb6665f541a0de787cacf8cf8, type: 3}
     sentence:
       portuguese: "Voc\xEA esta feliz de estar aqui?"
       english: Are you happy to be here?
       spanish: "\xBFEst\xE1s contento de estar aqu\xED?"
   - ActorName: Nina
-    profile: {fileID: 0}
+    profile: {fileID: 21300000, guid: 54b250adb6665f541a0de787cacf8cf8, type: 3}
     sentence:
       portuguese: "Voc\xEA esta na casa do Vando e do Alex?"
       english: Are you in Vando and Alex house now?
       spanish: "\xBFEst\xE1s en la casa de Vando y Alex ahora?"
   - ActorName: Nina
-    profile: {fileID: 21300000, guid: 1ef28cbd306e936488781f1b40825669, type: 3}
+    profile: {fileID: 21300000, guid: 54b250adb6665f541a0de787cacf8cf8, type: 3}
     sentence:
       portuguese: Espero que se divirtam
       english: I hope you guys have fun!

@@ -19,6 +19,7 @@ public class SlotFarm : MonoBehaviour
     [SerializeField] private float waterAmount;
 
     [SerializeField] private bool detectingWater;
+    private bool _isPlayerTouching;
 
     private int initialDigAmount;
     private float currentWaterInSlot;
@@ -51,7 +52,7 @@ public class SlotFarm : MonoBehaviour
                 plantedCarrot = true;
             }
 
-            if(Input.GetKeyDown(KeyCode.E) && plantedCarrot)
+            if(Input.GetKeyDown(KeyCode.E) && plantedCarrot && _isPlayerTouching)
             {
                 playerInventory.AddCarrot(1);
                 if(playerInventory.CollectCarrot())
@@ -87,6 +88,11 @@ public class SlotFarm : MonoBehaviour
         {
             detectingWater = true;
         }
+
+        if(collision.CompareTag("Player"))
+        {
+            _isPlayerTouching = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -94,6 +100,11 @@ public class SlotFarm : MonoBehaviour
         if(collision.CompareTag("Water"))
         {
             detectingWater = false;
+        }
+
+        if(collision.CompareTag("Player"))
+        {
+            _isPlayerTouching = false;
         }
     }
 }
