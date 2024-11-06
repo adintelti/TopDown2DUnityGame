@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8922517919746335056}
   - component: {fileID: 8922517919746335071}
+  - component: {fileID: 8922517919529880601}
+  - component: {fileID: 8922517919529880602}
   m_Layer: 0
   m_Name: NPC_1
   m_TagString: Untagged
@@ -52,6 +54,41 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8922517919529880601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8922517919746335057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eda75f4ebeae8b46b62a84983ab6d04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueRange: 1.5
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  dialogue: {fileID: 11400000, guid: fcdb9d94ebe54ab4fb91b6aefcd696de, type: 2}
+--- !u!114 &8922517919529880602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8922517919746335057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fdfa807313d30c418f8b600ef0f7939, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  paths:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &8922517919923504750
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,7 +159,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -8091321643688609963, guid: 21e6c5d7880362347aece3494b6ab958, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -204,7 +241,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: -4738599279905183678, guid: 53ea3be5ee1b3434cb0ec6f60d153896, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

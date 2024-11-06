@@ -6,6 +6,7 @@ public class House : MonoBehaviour
 {
     [Header("Amounts")]
     [SerializeField] private int woodAmount;
+    [SerializeField] private int cashAmount;
     [SerializeField] private float timeToBuild;
 
     [Header("Collor change")]
@@ -34,7 +35,7 @@ public class House : MonoBehaviour
 
     void Update()
     {
-        if(detectingPlayer && Input.GetKeyDown(KeyCode.E) && playerInventory.currentWood >= woodAmount)
+        if(detectingPlayer && Input.GetKeyDown(KeyCode.E) && playerInventory.currentWood >= woodAmount && playerInventory.currentCash >= cashAmount)
         {
             buildStarted = true;
             playerAnim.OnHammeringStarted();
@@ -42,6 +43,7 @@ public class House : MonoBehaviour
             player.transform.position = point.position;
             player.isPaused = true;
             playerInventory.AddWood(woodAmount * -1);
+            playerInventory.AddCash(cashAmount * -1);
         }
 
         if(buildStarted)

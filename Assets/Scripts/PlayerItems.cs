@@ -9,12 +9,14 @@ public class PlayerItems : MonoBehaviour
     public float currentWater;
     public float currentCarrot;
     public float currentFishes;
+    public float currentCash;
 
     [Header("Capacity")]
     public int maxWood;
     public int maxWater;
     public int maxCarrot;
     public int maxFish;
+    public int maxCash;
 
     public void AddWater(int water)
     {
@@ -77,5 +79,22 @@ public class PlayerItems : MonoBehaviour
     public bool CollectFish()
     {
         return currentFishes < maxFish;
+    }
+
+    public void AddCash(int cash)
+    {
+        if(CollectCash())
+        {
+            currentCash += cash;
+        }
+        else
+        {
+            Debug.Log("Carteira lotada!");
+        }
+    }
+
+    public bool CollectCash()
+    {
+        return currentCash < maxCash;
     }
 }
