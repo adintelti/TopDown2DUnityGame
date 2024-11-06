@@ -134,7 +134,6 @@ public class PlayerAnim : MonoBehaviour
 
         if(hit != null)
         {
-            Debug.Log("inimigo atingido");
             hit.GetComponentInChildren<AnimationControl>().OnHit();
         }
     }

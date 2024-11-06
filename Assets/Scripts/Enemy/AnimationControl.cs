@@ -6,6 +6,8 @@ public class AnimationControl : MonoBehaviour
 {
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float radius;
+    [SerializeField] private GameObject moneyPrefab;
+    [SerializeField] private int maxCoinDrop;
     public LayerMask playerLayer;
 
     private Animator anim;
@@ -38,7 +40,6 @@ public class AnimationControl : MonoBehaviour
 
             if(hit != null)
             {
-                Debug.Log("player atingido");
                 playerAnim.OnHit();
             }
         }
@@ -51,7 +52,13 @@ public class AnimationControl : MonoBehaviour
             skeleton.isDead = true;
             anim.SetTrigger("death");
 
-            Destroy(skeleton.gameObject, 1f);
+            int coinDrop = Random.Range(1, maxCoinDrop);
+            for (var i = 0; i < coinDrop; i++)
+            {
+                Instantiate(moneyPrefab, transform.position + new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f), transform.rotation);
+            }
+
+            Destroy(skeleton.gameObject, 1f);   
         }
         else
         {
