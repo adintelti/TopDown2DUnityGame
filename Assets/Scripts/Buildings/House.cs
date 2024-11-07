@@ -42,8 +42,8 @@ public class House : MonoBehaviour
             houseSprite.color = startColor;
             player.transform.position = point.position;
             player.isPaused = true;
-            playerInventory.AddWood(woodAmount * -1);
-            playerInventory.AddCash(cashAmount * -1);
+            playerInventory.currentCash -= woodAmount * -1;
+            playerInventory.currentWood -= cashAmount * -1;
         }
 
         if(buildStarted)

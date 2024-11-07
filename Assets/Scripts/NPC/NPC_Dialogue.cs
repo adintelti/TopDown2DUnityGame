@@ -7,6 +7,7 @@ public class NPC_Dialogue : MonoBehaviour
     public float dialogueRange;
     public LayerMask playerLayer;
     public DialogSettings dialogue;
+    public bool isShopNpc;
 
     private bool playerHit;
 
@@ -23,7 +24,10 @@ public class NPC_Dialogue : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.E) && playerHit)
         {
-            DialogueControl.instance.Speech(sentences.ToArray(), actorNames.ToArray(), actorSprites.ToArray());
+            if(isShopNpc)
+                ShopControl.instance.ShowShop();
+            else
+                DialogueControl.instance.Speech(sentences.ToArray(), actorNames.ToArray(), actorSprites.ToArray());
         }
     }
 

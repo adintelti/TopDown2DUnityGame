@@ -28,9 +28,9 @@ public class Coin : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            collision.GetComponent<PlayerItems>().AddCash(1);
             if(collision.GetComponent<PlayerItems>().CollectCash())
             {
+                collision.GetComponent<PlayerItems>().AddCash(1);
                 Destroy(gameObject);
             }
         }

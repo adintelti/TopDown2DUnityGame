@@ -18,6 +18,14 @@ public class PlayerItems : MonoBehaviour
     public int maxFish;
     public int maxCash;
 
+    [Header("Shop Prices")]
+    public int buyWoodPrice;
+    public int buyCarrotPrice;
+    public int buyFishPrice;
+    public int sellWoodPrice;
+    public int sellCarrotPrice;
+    public int sellFishPrice;
+
     public void AddWater(int water)
     {
         if(currentWater < maxWater)
@@ -47,6 +55,39 @@ public class PlayerItems : MonoBehaviour
         return currentWood < maxWood;
     }
 
+    public void BuyWood()
+    {
+        if(CollectWood())
+        {
+            if(buyWoodPrice <= currentCash)
+            {
+                AddWood(1);
+                AddCash(buyWoodPrice * -1);
+            }
+            else
+            {
+                Debug.Log("Não tem dinheiro suficiente!");
+            }
+        }
+        else
+        {
+            Debug.Log("Não é possível comprar, Inventário cheio de madeira!");
+        }
+    }
+
+    public void SellWood()
+    {
+        if(currentWood > 0)
+        {
+                AddCash(sellWoodPrice);
+                currentWood--;
+        }
+        else
+        {
+            Debug.Log("Não é possível vender, Inventário sem madeiras!");
+        }
+    }
+
     public void AddCarrot(int carrot)
     {
         if(CollectCarrot())
@@ -64,6 +105,39 @@ public class PlayerItems : MonoBehaviour
         return currentCarrot < maxCarrot;
     }
 
+    public void BuyCarrot()
+    {
+        if(CollectCarrot())
+        {
+            if(buyCarrotPrice <= currentCash)
+            {
+                AddCarrot(1);
+                AddCash(buyCarrotPrice * -1);
+            }
+            else
+            {
+                Debug.Log("Não tem dinheiro suficiente!");
+            }
+        }
+        else
+        {
+            Debug.Log("Não é possível comprar, Inventário cheio de cenouras!");
+        }
+    }
+
+    public void SellCarrot()
+    {
+        if(currentCarrot > 0)
+        {
+                AddCash(sellCarrotPrice);
+                currentCarrot--;
+        }
+        else
+        {
+            Debug.Log("Não é possível vender, Inventário sem cenouras!");
+        }
+    }
+
     public void AddFish(int fish)
     {
         if(CollectFish())
@@ -79,6 +153,39 @@ public class PlayerItems : MonoBehaviour
     public bool CollectFish()
     {
         return currentFishes < maxFish;
+    }
+
+    public void BuyFish()
+    {
+        if(CollectFish())
+        {
+            if(buyFishPrice <= currentCash)
+            {
+                AddFish(1);
+                AddCash(buyFishPrice * -1);
+            }
+            else
+            {
+                Debug.Log("Não tem dinheiro suficiente!");
+            }
+        }
+        else
+        {
+            Debug.Log("Não é possível comprar, Inventário cheio de peixes!");
+        }
+    }
+
+    public void SellFish()
+    {
+        if(currentFishes > 0)
+        {
+                AddCash(sellFishPrice);
+                currentFishes--;
+        }
+        else
+        {
+            Debug.Log("Não é possível vender, Inventário sem peixes!");
+        }
     }
 
     public void AddCash(int cash)
