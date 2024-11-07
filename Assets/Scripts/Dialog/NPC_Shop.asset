@@ -19,6 +19,6 @@ MonoBehaviour:
   - ActorName: Shop keeper
     profile: {fileID: -8091321643688609963, guid: 21e6c5d7880362347aece3494b6ab958, type: 3}
     sentence:
-      portuguese: "Ol\xE1 hero\xED, quer negociar algo"
-      english: Hello hero, let's negociate something
-      spanish: "Hola h\xE9roe, quieres comprar algo?"
+      portuguese: Tenho coisa boa a venda!
+      english: Got some good things on sale!
+      spanish: Tengo buenos itens a venda!

@@ -19,7 +19,7 @@ public class NPC : MonoBehaviour
 
     void Update()
     {
-        if(DialogueControl.instance.isShowing)
+        if(DialogueControl.instance.isShowing || ShopControl.instance.isShowing)
         {
             speed = 0f;
             anim.SetBool("isWalking", false);
