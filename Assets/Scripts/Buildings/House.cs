@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class House : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class House : MonoBehaviour
 
     private float elipsedTime;
     private bool buildStarted;
+    private bool houseCreated;
 
     void Start()
     {
@@ -35,7 +37,7 @@ public class House : MonoBehaviour
 
     void Update()
     {
-        if(detectingPlayer && Input.GetKeyDown(KeyCode.E) && playerInventory.currentWood >= woodAmount && playerInventory.currentCash >= cashAmount)
+        if(detectingPlayer && Input.GetKeyDown(KeyCode.E) && playerInventory.currentWood >= woodAmount && playerInventory.currentCash >= cashAmount && !houseCreated)
         {
             buildStarted = true;
             playerAnim.OnHammeringStarted();
@@ -57,7 +59,13 @@ public class House : MonoBehaviour
                 houseSprite.color = endColor;
                 player.isPaused = false;
                 houseColl.SetActive(true);
+                houseCreated = true;
             }
+        }
+
+        if(houseCreated && detectingPlayer && Input.GetKeyDown(KeyCode.E))
+        {
+            SceneManager.LoadScene("TestSecondScene");
         }
     }
 
