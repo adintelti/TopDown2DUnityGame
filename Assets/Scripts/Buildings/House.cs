@@ -37,7 +37,7 @@ public class House : MonoBehaviour
 
     void Update()
     {
-        if(detectingPlayer && Input.GetKeyDown(KeyCode.E) && playerInventory.currentWood >= woodAmount && playerInventory.currentCash >= cashAmount && !houseCreated)
+        if(detectingPlayer && (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Fire4")) && playerInventory.currentWood >= woodAmount && playerInventory.currentCash >= cashAmount && !houseCreated)
         {
             buildStarted = true;
             playerAnim.OnHammeringStarted();
@@ -63,7 +63,7 @@ public class House : MonoBehaviour
             }
         }
 
-        if(houseCreated && detectingPlayer && Input.GetKeyDown(KeyCode.E))
+        if(houseCreated && detectingPlayer && (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Fire4")))
         {
             SceneManager.LoadScene("TestSecondScene");
         }

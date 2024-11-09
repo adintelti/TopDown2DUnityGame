@@ -19,7 +19,7 @@ public class Casting : MonoBehaviour
 
     void Update()
     {
-        if(detectingPlayer && Input.GetKeyDown(KeyCode.E))
+        if(detectingPlayer && (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Fire4")))
         {
             playerAnim.OnCastingStarted();
         }

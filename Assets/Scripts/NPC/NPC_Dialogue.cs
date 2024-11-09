@@ -22,7 +22,7 @@ public class NPC_Dialogue : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E) && playerHit)
+        if((Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Fire4")) && playerHit)
         {
             if(isShopNpc)
                 ShopControl.instance.ShowShop();
