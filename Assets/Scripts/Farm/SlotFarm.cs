@@ -52,7 +52,7 @@ public class SlotFarm : MonoBehaviour
                 plantedCarrot = true;
             }
 
-            if(Input.GetKeyDown(KeyCode.E) && plantedCarrot && _isPlayerTouching)
+            if((Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Fire4")) && plantedCarrot && _isPlayerTouching)
             {
                 playerInventory.AddCarrot(1);
                 if(playerInventory.CollectCarrot())

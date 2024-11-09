@@ -93,12 +93,12 @@ public class Player : MonoBehaviour
     private void OnWatering()
     {
         if(handlingObj == 2 ){
-            if(Input.GetMouseButtonDown(0) && playerItems.currentWater > 0)
+            if((Input.GetMouseButtonDown(0) || Input.GetButtonDown("Fire1")) && playerItems.currentWater > 0)
             {
                 _isWatering = true;
                 speed = 0f;
             }
-            else if(Input.GetMouseButtonUp(0) || playerItems.currentWater < 0)
+            else if((Input.GetMouseButtonUp(0) || Input.GetButtonUp("Fire1")) || playerItems.currentWater < 0)
             {
                 _isWatering = false;
                 speed = initialSpeed;
@@ -119,12 +119,12 @@ public class Player : MonoBehaviour
     private void OnDig()
     {
         if(handlingObj == 1){
-            if(Input.GetMouseButtonDown(0))
+            if((Input.GetMouseButtonDown(0) || Input.GetButtonDown("Fire1")))
             {
                 _isDigging = true;
                 speed = 0f;
             }
-            else if(Input.GetMouseButtonUp(0))
+            else if((Input.GetMouseButtonUp(0) || Input.GetButtonUp("Fire1")))
             {
                 _isDigging = false;
                 speed = initialSpeed;
@@ -139,12 +139,12 @@ public class Player : MonoBehaviour
     private void OnCutting()
     {
         if(handlingObj == 0){
-            if(Input.GetMouseButtonDown(0))
+            if((Input.GetMouseButtonDown(0) || Input.GetButtonDown("Fire1")))
             {
                 _isCutting = true;
                 speed = 0f;
             }
-            else if(Input.GetMouseButtonUp(0))
+            else if((Input.GetMouseButtonUp(0) || Input.GetButtonUp("Fire1")))
             {
                 _isCutting = false;
                 speed = initialSpeed;
@@ -175,6 +175,16 @@ public class Player : MonoBehaviour
         {
             handlingObj = 2;
         }
+
+        // Controle via joystick
+        if (Input.GetButtonDown("JoystickR"))
+        {
+            handlingObj = (handlingObj + 1) % 3; // Incrementa e faz wrap-around de 0 a 2
+        }
+        if (Input.GetButtonDown("JoystickL"))
+        {
+            handlingObj = (handlingObj == 0) ? 2 : handlingObj - 1; // Decrementa e faz wrap-around de 0 a 2
+        }
     }
 
     private void OnMove()
@@ -184,13 +194,13 @@ public class Player : MonoBehaviour
 
     private void OnRun()
     {
-        if(Input.GetKeyDown(KeyCode.LeftShift))
+        if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetButtonDown("Fire2"))
         {
             speed = runSpeed;
             _isRunning = true;
         }
 
-        if(Input.GetKeyUp(KeyCode.LeftShift))
+        if(Input.GetKeyUp(KeyCode.LeftShift) || Input.GetButtonUp("Fire2"))
         {
             speed = initialSpeed;
             _isRunning = false;
@@ -199,13 +209,13 @@ public class Player : MonoBehaviour
 
     private void OnRolling()
     {
-        if(Input.GetMouseButtonDown(1))
+        if(Input.GetMouseButtonDown(1) || Input.GetButtonDown("Fire3"))
         {
             speed = runSpeed;
             _isRolling = true;
         }
 
-        if(Input.GetMouseButtonUp(1))
+        if(Input.GetMouseButtonUp(1) || Input.GetButtonUp("Fire3"))
         {
             speed = initialSpeed;
             _isRolling = false;
