@@ -44,7 +44,7 @@ public class PlayerAnim : MonoBehaviour
 
     private void OnMove()
     {
-        if (player.direction.sqrMagnitude > 0)
+        if (player.movement.sqrMagnitude > 0)
         {
             if(player.isRolling)
             {
@@ -63,11 +63,11 @@ public class PlayerAnim : MonoBehaviour
             anim.SetInteger("transition", 0);
         }
 
-        if(player.direction.x > 0)
+        if(player.movement.x > 0)
         {
             transform.eulerAngles = new Vector2(0, 0);
         } 
-        else if(player.direction.x < 0)
+        else if(player.movement.x < 0)
         {
             transform.eulerAngles = new Vector2(0, 180);
         }
@@ -88,7 +88,7 @@ public class PlayerAnim : MonoBehaviour
 
     private void OnRun()
     {
-        if(player.isRunning && player.direction.sqrMagnitude > 0)
+        if(player.isRunning && player.movement.sqrMagnitude > 0)
         {
             anim.SetInteger("transition", 2);
         }

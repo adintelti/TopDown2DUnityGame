@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class House : MonoBehaviour
@@ -37,17 +36,6 @@ public class House : MonoBehaviour
 
     void Update()
     {
-        if(detectingPlayer && (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Fire4")) && playerInventory.currentWood >= woodAmount && playerInventory.currentCash >= cashAmount && !houseCreated)
-        {
-            buildStarted = true;
-            playerAnim.OnHammeringStarted();
-            houseSprite.color = startColor;
-            player.transform.position = point.position;
-            player.isPaused = true;
-            playerInventory.currentCash -= woodAmount * -1;
-            playerInventory.currentWood -= cashAmount * -1;
-        }
-
         if(buildStarted)
         {
             elipsedTime += Time.deltaTime;
@@ -62,8 +50,22 @@ public class House : MonoBehaviour
                 houseCreated = true;
             }
         }
+    }
 
-        if(houseCreated && detectingPlayer && (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Fire4")))
+    public void Interact(InputAction.CallbackContext value)
+    {
+        if (detectingPlayer && value.started && playerInventory.currentWood >= woodAmount && playerInventory.currentCash >= cashAmount && !houseCreated)
+        {
+            buildStarted = true;
+            playerAnim.OnHammeringStarted();
+            houseSprite.color = startColor;
+            player.transform.position = point.position;
+            player.isPaused = true;
+            playerInventory.currentCash -= woodAmount * -1;
+            playerInventory.currentWood -= cashAmount * -1;
+        }
+
+        if (houseCreated && detectingPlayer && value.started)
         {
             SceneManager.LoadScene("TestSecondScene");
         }

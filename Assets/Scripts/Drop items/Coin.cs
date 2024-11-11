@@ -9,11 +9,6 @@ public class Coin : MonoBehaviour
 
     private float timeCount;
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         timeCount += Time.deltaTime;

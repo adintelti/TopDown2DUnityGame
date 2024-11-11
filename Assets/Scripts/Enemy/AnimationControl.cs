@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AnimationControl : MonoBehaviour
 {
@@ -19,12 +17,6 @@ public class AnimationControl : MonoBehaviour
         anim = GetComponent<Animator>();
         playerAnim = FindObjectOfType<PlayerAnim>();
         skeleton = GetComponentInParent<Skeleton>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void PlayAnim(int value)

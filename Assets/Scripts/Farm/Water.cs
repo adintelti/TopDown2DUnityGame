@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Water : MonoBehaviour
 {
@@ -11,10 +10,10 @@ public class Water : MonoBehaviour
     {
         playerInventory = FindObjectOfType<PlayerItems>();
     }
-
-    void Update()
+	
+	public void Interact(InputAction.CallbackContext value)
     {
-        if(detectingPlayer && (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Fire4")))
+        if(value.started && detectingPlayer) 
         {
             playerInventory.AddWater(1);
         }

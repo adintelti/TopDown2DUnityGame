@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Casting : MonoBehaviour
 {
@@ -17,9 +16,9 @@ public class Casting : MonoBehaviour
         playerAnim = playerInventory.GetComponent<PlayerAnim>();
     }
 
-    void Update()
+    public void Interact(InputAction.CallbackContext value)
     {
-        if(detectingPlayer && (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Fire4")))
+        if (detectingPlayer && value.started)
         {
             playerAnim.OnCastingStarted();
         }
