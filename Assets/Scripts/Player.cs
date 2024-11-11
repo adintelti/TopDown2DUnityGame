@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
     public bool isPaused;
+    public Vector2 movement;
 
     [SerializeField] private float speed;
     [SerializeField] private float runSpeed;
@@ -18,7 +20,6 @@ public class Player : MonoBehaviour
     private bool _isCutting;
     private bool _isDigging;
     private bool _isWatering;
-    private Vector2 _direction;
 
     [HideInInspector]public int handlingObj;
     private PlayerItems playerItems;
@@ -53,31 +54,11 @@ public class Player : MonoBehaviour
         set { _isWatering = value; }
     }
 
-    public Vector2 direction
-    { 
-        get { return _direction; }
-        set { _direction = value; }
-    }
-
     private void Start()
     {
         rig = GetComponent<Rigidbody2D>();
         playerItems = GetComponent<PlayerItems>();
         initialSpeed = speed;
-    }
-
-    private void Update()
-    {
-        if(!isPaused)
-        {
-            OnToolChange();
-            OnInput();
-            OnRun();
-            OnRolling();
-            OnCutting();
-            OnDig();
-            OnWatering();
-        }
     }
 
     private void FixedUpdate()
@@ -88,100 +69,123 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void Move(InputAction.CallbackContext value)
+    {
+        if (!isPaused)
+        {
+            movement = value.ReadValue<Vector2>();
+        }
+    }
+
     #region Movement
 
-    private void OnWatering()
+    public void Action(InputAction.CallbackContext value)
     {
-        if(handlingObj == 2 ){
-            if((Input.GetMouseButtonDown(0) || Input.GetButtonDown("Fire1")) && playerItems.currentWater > 0)
-            {
-                _isWatering = true;
-                speed = 0f;
-            }
-            else if((Input.GetMouseButtonUp(0) || Input.GetButtonUp("Fire1")) || playerItems.currentWater < 0)
-            {
-                _isWatering = false;
-                speed = initialSpeed;
-                Debug.Log("Regador vazio!");
-            }
-
-            if(_isWatering)
-            {
-                playerItems.currentWater -= 0.01f;
-            }
-        }
-        else
+        if (!isPaused && (value.started || value.performed))
         {
-            _isWatering = false;
-        }
-    }
-
-    private void OnDig()
-    {
-        if(handlingObj == 1){
-            if((Input.GetMouseButtonDown(0) || Input.GetButtonDown("Fire1")))
-            {
-                _isDigging = true;
-                speed = 0f;
-            }
-            else if((Input.GetMouseButtonUp(0) || Input.GetButtonUp("Fire1")))
-            {
-                _isDigging = false;
-                speed = initialSpeed;
-            }
-        }
-        else
-        {
-            _isDigging = false;
-        }
-    }
-
-    private void OnCutting()
-    {
-        if(handlingObj == 0){
-            if((Input.GetMouseButtonDown(0) || Input.GetButtonDown("Fire1")))
+            if(handlingObj == 0)
             {
                 _isCutting = true;
                 speed = 0f;
             }
-            else if((Input.GetMouseButtonUp(0) || Input.GetButtonUp("Fire1")))
+            else
+            {
+                _isCutting = false;
+            }
+
+            if (handlingObj == 1)
+            {
+                _isDigging = true;
+                speed = 0f;
+            }
+            else
+            {
+                _isDigging = false;
+            }
+
+            if (handlingObj == 2)
+            {
+                if (playerItems.currentWater > 0)
+                {
+                    _isWatering = true;
+                    speed = 0f;
+                }
+                else if (playerItems.currentWater < 0)
+                {
+                    _isWatering = false;
+                    speed = initialSpeed;
+                    Debug.Log("Regador vazio!");
+                }
+                else
+                {
+                    _isWatering = false;
+                }
+            }
+        }
+
+        if (value.canceled)
+        {
+            if(handlingObj == 0)
             {
                 _isCutting = false;
                 speed = initialSpeed;
             }
-        }
-        else
-        {
-            _isCutting = false;
+
+            if (handlingObj == 1)
+            {
+                _isDigging = false;
+                speed = initialSpeed;
+            }
+
+            if(handlingObj == 2)
+            {
+                _isWatering = false;
+                speed = initialSpeed;
+                Debug.Log("Parou de regar!");
+            }
         }
     }
 
-    private void OnInput()
-    {
-        _direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-    }
+    //private void OnInput()
+    //{
+    //    movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+    //}
 
-    private void OnToolChange()
+    public void SelectAxeByKeyBoard(InputAction.CallbackContext value)
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        if(!isPaused && value.started)
         {
             handlingObj = 0;
         }
-        if(Input.GetKeyDown(KeyCode.Alpha2))
+    }
+
+    public void SelectShovelByKeyBoard(InputAction.CallbackContext value)
+    {
+        if (!isPaused && value.started)
         {
             handlingObj = 1;
         }
-        if(Input.GetKeyDown(KeyCode.Alpha3))
+    }
+
+    public void SelectWaterCanByKeyBoard(InputAction.CallbackContext value)
+    {
+        if (!isPaused && value.started)
         {
             handlingObj = 2;
         }
+    }
 
-        // Controle via joystick
-        if (Input.GetButtonDown("JoystickR"))
+    public void IncreaseToolSelection(InputAction.CallbackContext value)
+    {
+        if (!isPaused && value.started)
         {
             handlingObj = (handlingObj + 1) % 3; // Incrementa e faz wrap-around de 0 a 2
         }
-        if (Input.GetButtonDown("JoystickL"))
+    }
+
+    public void DecreaseToolSelection(InputAction.CallbackContext value)
+    {
+        if (!isPaused && value.started)
         {
             handlingObj = (handlingObj == 0) ? 2 : handlingObj - 1; // Decrementa e faz wrap-around de 0 a 2
         }
@@ -189,33 +193,32 @@ public class Player : MonoBehaviour
 
     private void OnMove()
     {
-        rig.MovePosition(rig.position + _direction * speed * Time.fixedDeltaTime);
+        rig.MovePosition(rig.position + movement * speed * Time.fixedDeltaTime);
     }
 
-    private void OnRun()
+    public void Run(InputAction.CallbackContext value)
     {
-        if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetButtonDown("Fire2"))
+        if (!isPaused && value.started)
         {
             speed = runSpeed;
             _isRunning = true;
         }
-
-        if(Input.GetKeyUp(KeyCode.LeftShift) || Input.GetButtonUp("Fire2"))
+        if(value.canceled)
         {
             speed = initialSpeed;
             _isRunning = false;
         }
     }
 
-    private void OnRolling()
+    public void Roll(InputAction.CallbackContext value)
     {
-        if(Input.GetMouseButtonDown(1) || Input.GetButtonDown("Fire3"))
+        if(!isPaused && (value.started || value.performed))
         {
             speed = runSpeed;
             _isRolling = true;
         }
 
-        if(Input.GetMouseButtonUp(1) || Input.GetButtonUp("Fire3"))
+        if(value.canceled)
         {
             speed = initialSpeed;
             _isRolling = false;

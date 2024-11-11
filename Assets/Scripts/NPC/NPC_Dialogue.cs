@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class NPC_Dialogue : MonoBehaviour
 {
@@ -18,17 +18,6 @@ public class NPC_Dialogue : MonoBehaviour
     void Start()
     {
         GetNPCInfo();
-    }
-
-    void Update()
-    {
-        if((Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Fire4")) && playerHit)
-        {
-            if(isShopNpc)
-                ShopControl.instance.ShowShop();
-            else
-                DialogueControl.instance.Speech(sentences.ToArray(), actorNames.ToArray(), actorSprites.ToArray());
-        }
     }
 
     void FixedUpdate()
@@ -69,6 +58,17 @@ public class NPC_Dialogue : MonoBehaviour
         else
         {
             playerHit = false;
+        }
+    }
+	
+	public void Interact(InputAction.CallbackContext value)
+    {
+        if (value.started && playerHit)
+        {
+            if (isShopNpc)
+                ShopControl.instance.ShowShop();
+            else
+                DialogueControl.instance.Speech(sentences.ToArray(), actorNames.ToArray(), actorSprites.ToArray());
         }
     }
 

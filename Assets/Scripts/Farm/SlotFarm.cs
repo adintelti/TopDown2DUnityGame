@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SlotFarm : MonoBehaviour
 {
@@ -51,16 +50,19 @@ public class SlotFarm : MonoBehaviour
 
                 plantedCarrot = true;
             }
-
-            if((Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Fire4")) && plantedCarrot && _isPlayerTouching)
+        }
+    }
+	
+	public void Interact(InputAction.CallbackContext value)
+    {
+        if (value.started && plantedCarrot && _isPlayerTouching)
+        {
+            playerInventory.AddCarrot(1);
+            if (playerInventory.CollectCarrot())
             {
-                playerInventory.AddCarrot(1);
-                if(playerInventory.CollectCarrot())
-                {
-                    _audioSource.PlayOneShot(_carrotSFX);
-                    spriteRenderer.sprite = hole;
-                    currentWaterInSlot = 0;
-                }
+                _audioSource.PlayOneShot(_carrotSFX);
+                spriteRenderer.sprite = hole;
+                currentWaterInSlot = 0;
             }
         }
     }

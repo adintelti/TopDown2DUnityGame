@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Wood : MonoBehaviour
 {
@@ -8,11 +6,6 @@ public class Wood : MonoBehaviour
     [SerializeField] private float timeMove;
 
     private float timeCount;
-
-    void Start()
-    {
-        
-    }
 
     void Update()
     {
