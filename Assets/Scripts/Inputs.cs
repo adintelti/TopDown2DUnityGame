@@ -97,6 +97,14 @@ public class @Inputs : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ToggleSound"",
+                    ""type"": ""Button"",
+                    ""id"": ""ced3ad70-2caf-4c58-8342-23a7dee1ed05"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -462,6 +470,28 @@ public class @Inputs : IInputActionCollection, IDisposable
                     ""action"": ""Action"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3fdf2e9c-3dff-45a5-be61-b9f8e462a812"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleSound"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8f46ed76-efb4-4263-97e8-e31ac7a6f664"",
+                    ""path"": ""<Keyboard>/f2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleSound"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -480,6 +510,7 @@ public class @Inputs : IInputActionCollection, IDisposable
         m_Jogador_SelectToolPlus = m_Jogador.FindAction("SelectToolPlus", throwIfNotFound: true);
         m_Jogador_Roll = m_Jogador.FindAction("Roll", throwIfNotFound: true);
         m_Jogador_Action = m_Jogador.FindAction("Action", throwIfNotFound: true);
+        m_Jogador_ToggleSound = m_Jogador.FindAction("ToggleSound", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -539,6 +570,7 @@ public class @Inputs : IInputActionCollection, IDisposable
     private readonly InputAction m_Jogador_SelectToolPlus;
     private readonly InputAction m_Jogador_Roll;
     private readonly InputAction m_Jogador_Action;
+    private readonly InputAction m_Jogador_ToggleSound;
     public struct JogadorActions
     {
         private @Inputs m_Wrapper;
@@ -553,6 +585,7 @@ public class @Inputs : IInputActionCollection, IDisposable
         public InputAction @SelectToolPlus => m_Wrapper.m_Jogador_SelectToolPlus;
         public InputAction @Roll => m_Wrapper.m_Jogador_Roll;
         public InputAction @Action => m_Wrapper.m_Jogador_Action;
+        public InputAction @ToggleSound => m_Wrapper.m_Jogador_ToggleSound;
         public InputActionMap Get() { return m_Wrapper.m_Jogador; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -592,6 +625,9 @@ public class @Inputs : IInputActionCollection, IDisposable
                 @Action.started -= m_Wrapper.m_JogadorActionsCallbackInterface.OnAction;
                 @Action.performed -= m_Wrapper.m_JogadorActionsCallbackInterface.OnAction;
                 @Action.canceled -= m_Wrapper.m_JogadorActionsCallbackInterface.OnAction;
+                @ToggleSound.started -= m_Wrapper.m_JogadorActionsCallbackInterface.OnToggleSound;
+                @ToggleSound.performed -= m_Wrapper.m_JogadorActionsCallbackInterface.OnToggleSound;
+                @ToggleSound.canceled -= m_Wrapper.m_JogadorActionsCallbackInterface.OnToggleSound;
             }
             m_Wrapper.m_JogadorActionsCallbackInterface = instance;
             if (instance != null)
@@ -626,6 +662,9 @@ public class @Inputs : IInputActionCollection, IDisposable
                 @Action.started += instance.OnAction;
                 @Action.performed += instance.OnAction;
                 @Action.canceled += instance.OnAction;
+                @ToggleSound.started += instance.OnToggleSound;
+                @ToggleSound.performed += instance.OnToggleSound;
+                @ToggleSound.canceled += instance.OnToggleSound;
             }
         }
     }
@@ -642,5 +681,6 @@ public class @Inputs : IInputActionCollection, IDisposable
         void OnSelectToolPlus(InputAction.CallbackContext context);
         void OnRoll(InputAction.CallbackContext context);
         void OnAction(InputAction.CallbackContext context);
+        void OnToggleSound(InputAction.CallbackContext context);
     }
 }
