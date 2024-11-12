@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class Skeleton : MonoBehaviour
@@ -16,8 +17,11 @@ public class Skeleton : MonoBehaviour
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private AnimationControl animControl;
 
+    [SerializeField] private AudioSource _audioSource;
+
     private Player player;
     private bool _detectPlayer;
+    private bool playSFX;
 
     void Start()
     {
@@ -83,5 +87,14 @@ public class Skeleton : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, radius);
+    }
+
+    public void ToogleSound(InputAction.CallbackContext value)
+    {
+        if (value.started)
+        {
+            playSFX = !playSFX;
+        }
+        _audioSource.mute = playSFX;
     }
 }

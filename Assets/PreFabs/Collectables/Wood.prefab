@@ -115,6 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: -5
   timeMove: 0.3
+  _audioSource: {fileID: 8400930559206527131}
 --- !u!82 &8400930559206527131
 AudioSource:
   m_ObjectHideFlags: 0
@@ -130,7 +131,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128

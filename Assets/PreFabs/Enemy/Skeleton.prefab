@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 1540630033}
   - component: {fileID: 1540630036}
   m_Layer: 0
-  m_Name: Sprite
+  m_Name: SkeletonSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -389,7 +389,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -589,6 +589,7 @@ MonoBehaviour:
     m_Bits: 256
   agent: {fileID: 5398028299126665508}
   animControl: {fileID: 5398028298636388630}
+  _audioSource: {fileID: 1540630033}
 --- !u!195 &5398028299126665508
 NavMeshAgent:
   m_ObjectHideFlags: 0

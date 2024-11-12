@@ -23988,6 +23988,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 389926986}
   m_CullTransparentMesh: 0
+--- !u!114 &396503577 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5398028299126665509, guid: 1559aa829e74eb24383671136eaa7262, type: 3}
+  m_PrefabInstance: {fileID: 1780090508}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e59a62d8cc5a6c4482ee9fef22a8262, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &404322122
 GameObject:
   m_ObjectHideFlags: 0
@@ -24512,6 +24523,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &469500330 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5398028299126665509, guid: 1559aa829e74eb24383671136eaa7262, type: 3}
+  m_PrefabInstance: {fileID: 1332849829}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e59a62d8cc5a6c4482ee9fef22a8262, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &477377742
 GameObject:
   m_ObjectHideFlags: 0
@@ -29192,6 +29214,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1210810514}
   m_CullTransparentMesh: 0
+--- !u!114 &1215844532 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5398028299126665509, guid: 1559aa829e74eb24383671136eaa7262, type: 3}
+  m_PrefabInstance: {fileID: 5398028297637139919}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e59a62d8cc5a6c4482ee9fef22a8262, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1263974963
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30822,6 +30855,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1540630033, guid: 1559aa829e74eb24383671136eaa7262, type: 3}
+      propertyPath: Mute
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5398028298636388630, guid: 1559aa829e74eb24383671136eaa7262, type: 3}
       propertyPath: moneyPrefab
       value: 
@@ -33367,7 +33404,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -33925,6 +33962,66 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1814841389}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: ToogleSound
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1721998727}
+        m_TargetAssemblyTypeName: ActorSFX, Assembly-CSharp
+        m_MethodName: ToogleSound
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1614554114, guid: cc679282794a6324da3e71922f1435b4, type: 3}
+        m_TargetAssemblyTypeName: Wood, Assembly-CSharp
+        m_MethodName: ToogleSound
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1215844532}
+        m_TargetAssemblyTypeName: Skeleton, Assembly-CSharp
+        m_MethodName: ToogleSound
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 469500330}
+        m_TargetAssemblyTypeName: Skeleton, Assembly-CSharp
+        m_MethodName: ToogleSound
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 396503577}
+        m_TargetAssemblyTypeName: Skeleton, Assembly-CSharp
         m_MethodName: ToogleSound
         m_Mode: 0
         m_Arguments:
@@ -38884,7 +38981,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
