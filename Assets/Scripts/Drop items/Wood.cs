@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Wood : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float timeMove;
+    [SerializeField] private AudioSource _audioSource;
 
     private float timeCount;
+    private bool playSFX;
 
     void Update()
     {
@@ -27,5 +30,14 @@ public class Wood : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+    }
+
+    public void ToogleSound(InputAction.CallbackContext value)
+    {
+        if (value.started)
+        {
+            playSFX = !playSFX;
+        }
+        _audioSource.mute = playSFX;
     }
 }

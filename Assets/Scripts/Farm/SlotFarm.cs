@@ -7,6 +7,7 @@ public class SlotFarm : MonoBehaviour
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _holeSFX;
     [SerializeField] private AudioClip _carrotSFX;
+    private bool playSFX;
 
     [Header("Components")]
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -108,5 +109,14 @@ public class SlotFarm : MonoBehaviour
         {
             _isPlayerTouching = false;
         }
+    }
+
+    public void ToogleSound(InputAction.CallbackContext value)
+    {
+        if (value.started)
+        {
+            playSFX = !playSFX;
+        }
+        _audioSource.mute = playSFX;
     }
 }
