@@ -883,7 +883,7 @@ GameObject:
   - component: {fileID: 233804129}
   - component: {fileID: 233804131}
   m_Layer: 5
-  m_Name: ToggleSound
+  m_Name: ToggleSoundButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28339,12 +28339,12 @@ GameObject:
   - component: {fileID: 978680659}
   - component: {fileID: 978680658}
   m_Layer: 5
-  m_Name: Button
+  m_Name: BtnNextDialog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &978680657
 RectTransform:
   m_ObjectHideFlags: 0
@@ -31726,7 +31726,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1423438195
 RectTransform:
   m_ObjectHideFlags: 0
@@ -33971,6 +33971,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: SlotFarm, Assembly-CSharp
         m_MethodName: Interact
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 468181182}
+        m_TargetAssemblyTypeName: DialogueControl, Assembly-CSharp
+        m_MethodName: NextSentence
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -40825,6 +40837,10 @@ PrefabInstance:
       propertyPath: paths.Array.data[3]
       value: 
       objectReference: {fileID: 1774475982}
+    - target: {fileID: 8922517919529880602, guid: 3673638b85e8ea344bae6f9bf9ad6306, type: 3}
+      propertyPath: randomMovement
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8922517919746335056, guid: 3673638b85e8ea344bae6f9bf9ad6306, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.52

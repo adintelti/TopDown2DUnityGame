@@ -23,9 +23,12 @@ public class ShopControl : MonoBehaviour
 
     public void ShowShop()
     {
-        shopDialogueObj.SetActive(true);
-        _player.isPaused = true;
-        _isShowing = true;
+        if (!_isShowing)
+        {
+            shopDialogueObj.SetActive(true);
+            _player.isPaused = true;
+            _isShowing = true;
+        }
     }
 
     public void HideShop()

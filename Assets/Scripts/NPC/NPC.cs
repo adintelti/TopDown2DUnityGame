@@ -5,6 +5,7 @@ public class NPC : MonoBehaviour
 {
     public float speed;
     public List<Transform> paths = new List<Transform>();
+    public bool randomMovement;
 
     private float initialSpeed;
     private int index;
@@ -35,8 +36,10 @@ public class NPC : MonoBehaviour
         {
             if(index < paths.Count - 1)
             {
-                index++;//sequencial
-                //index = Random.Range(0, paths.Count - 1);//random
+                if(randomMovement)
+                    index = Random.Range(0, paths.Count - 1);//random
+                else
+                    index++;//sequencial
             }
             else
             {

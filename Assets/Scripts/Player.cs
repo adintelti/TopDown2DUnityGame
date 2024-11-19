@@ -75,6 +75,10 @@ public class Player : MonoBehaviour
         {
             movement = value.ReadValue<Vector2>();
         }
+        else
+        { 
+            movement = new Vector2(0f, 0f);
+        }
     }
 
     #region Movement
@@ -145,11 +149,6 @@ public class Player : MonoBehaviour
             }
         }
     }
-
-    //private void OnInput()
-    //{
-    //    movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-    //}
 
     public void SelectAxeByKeyBoard(InputAction.CallbackContext value)
     {

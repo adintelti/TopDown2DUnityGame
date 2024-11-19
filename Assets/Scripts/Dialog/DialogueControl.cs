@@ -47,16 +47,22 @@ public class DialogueControl : MonoBehaviour
 
     IEnumerator TypeSentence()
     {
-        foreach (char letter in sentences[index].ToCharArray())
-        {
-            speechText.text += letter;
-            yield return new WaitForSeconds(typingSpeed);
+        if(sentences != null && sentences.Length > 0)
+        { 
+            foreach (char letter in sentences[index].ToCharArray())
+            {
+                speechText.text += letter;
+                yield return new WaitForSeconds(typingSpeed);
+            }
         }
     }
 
     //pula para próxima frase/fala
     public void NextSentence()
     {
+        if (sentences == null || sentences.Length == 0)
+            return;
+
         if(speechText.text == sentences[index])
         {
             if(index < sentences.Length - 1)
