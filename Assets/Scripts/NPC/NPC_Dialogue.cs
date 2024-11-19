@@ -66,7 +66,12 @@ public class NPC_Dialogue : MonoBehaviour
         if (value.started && playerHit)
         {
             if (isShopNpc)
-                ShopControl.instance.ShowShop();
+            {
+                if(!ShopControl.instance.isShowing)
+                    ShopControl.instance.ShowShop();
+                else
+                    ShopControl.instance.HideShop();
+            }
             else
                 DialogueControl.instance.Speech(sentences.ToArray(), actorNames.ToArray(), actorSprites.ToArray());
         }
