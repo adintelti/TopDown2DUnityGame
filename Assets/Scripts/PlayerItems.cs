@@ -77,7 +77,7 @@ public class PlayerItems : MonoBehaviour
 
     public void SellWood()
     {
-        if(currentWood > 0)
+        if(currentWood > 0 && CollectCash())
         {
                 AddCash(sellWoodPrice);
                 currentWood--;
@@ -127,7 +127,7 @@ public class PlayerItems : MonoBehaviour
 
     public void SellCarrot()
     {
-        if(currentCarrot > 0)
+        if(currentCarrot > 0 && CollectCash())
         {
                 AddCash(sellCarrotPrice);
                 currentCarrot--;
@@ -177,7 +177,7 @@ public class PlayerItems : MonoBehaviour
 
     public void SellFish()
     {
-        if(currentFishes > 0)
+        if(currentFishes > 0 && CollectCash())
         {
                 AddCash(sellFishPrice);
                 currentFishes--;

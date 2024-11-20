@@ -12,12 +12,11 @@ public class HUDController : MonoBehaviour
 
     [Header("Tools")]
     public List<Image> toolsUI = new List<Image>();
+    [SerializeField] private Color selectedColor;
+    [SerializeField] private Color UnselectedColor;
 
     [Header("Money")]
     [SerializeField] private Text CashUIText;
-
-    [SerializeField] private Color selectedColor;
-    [SerializeField] private Color UnselectedColor;
 
     private PlayerItems playerInventory;
     private Player player;
@@ -34,7 +33,7 @@ public class HUDController : MonoBehaviour
         woodUIBar.fillAmount = 0f;
         carrotUIBar.fillAmount = 0f;
         fishUIBar.fillAmount = 0f;
-        CashUIText.text = "00";
+        CashUIText.text = "000";
     }
 
     void Update()
@@ -43,7 +42,7 @@ public class HUDController : MonoBehaviour
         woodUIBar.fillAmount = playerInventory.currentWood / playerInventory.maxWood;
         carrotUIBar.fillAmount = playerInventory.currentCarrot / playerInventory.maxCarrot;
         fishUIBar.fillAmount = playerInventory.currentFishes / playerInventory.maxFish;
-        CashUIText.text = playerInventory.currentCash.ToString("00.00");;
+        CashUIText.text = playerInventory.currentCash.ToString("000.00");;
 
         for (var i = 0; i < toolsUI.Count; i++)
         {

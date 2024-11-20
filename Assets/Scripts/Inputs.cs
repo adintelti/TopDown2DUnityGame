@@ -105,6 +105,14 @@ public class @Inputs : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""PauseGame"",
+                    ""type"": ""Button"",
+                    ""id"": ""32acd7ec-f46e-4bd7-b2c1-9e8ebe2aa795"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -492,6 +500,28 @@ public class @Inputs : IInputActionCollection, IDisposable
                     ""action"": ""ToggleSound"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7467116e-258d-4e0b-92dc-8e301839f4ad"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a2ebc86e-0467-4fb0-8da4-753f53bb06a6"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -511,6 +541,7 @@ public class @Inputs : IInputActionCollection, IDisposable
         m_Jogador_Roll = m_Jogador.FindAction("Roll", throwIfNotFound: true);
         m_Jogador_Action = m_Jogador.FindAction("Action", throwIfNotFound: true);
         m_Jogador_ToggleSound = m_Jogador.FindAction("ToggleSound", throwIfNotFound: true);
+        m_Jogador_PauseGame = m_Jogador.FindAction("PauseGame", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -571,6 +602,7 @@ public class @Inputs : IInputActionCollection, IDisposable
     private readonly InputAction m_Jogador_Roll;
     private readonly InputAction m_Jogador_Action;
     private readonly InputAction m_Jogador_ToggleSound;
+    private readonly InputAction m_Jogador_PauseGame;
     public struct JogadorActions
     {
         private @Inputs m_Wrapper;
@@ -586,6 +618,7 @@ public class @Inputs : IInputActionCollection, IDisposable
         public InputAction @Roll => m_Wrapper.m_Jogador_Roll;
         public InputAction @Action => m_Wrapper.m_Jogador_Action;
         public InputAction @ToggleSound => m_Wrapper.m_Jogador_ToggleSound;
+        public InputAction @PauseGame => m_Wrapper.m_Jogador_PauseGame;
         public InputActionMap Get() { return m_Wrapper.m_Jogador; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -628,6 +661,9 @@ public class @Inputs : IInputActionCollection, IDisposable
                 @ToggleSound.started -= m_Wrapper.m_JogadorActionsCallbackInterface.OnToggleSound;
                 @ToggleSound.performed -= m_Wrapper.m_JogadorActionsCallbackInterface.OnToggleSound;
                 @ToggleSound.canceled -= m_Wrapper.m_JogadorActionsCallbackInterface.OnToggleSound;
+                @PauseGame.started -= m_Wrapper.m_JogadorActionsCallbackInterface.OnPauseGame;
+                @PauseGame.performed -= m_Wrapper.m_JogadorActionsCallbackInterface.OnPauseGame;
+                @PauseGame.canceled -= m_Wrapper.m_JogadorActionsCallbackInterface.OnPauseGame;
             }
             m_Wrapper.m_JogadorActionsCallbackInterface = instance;
             if (instance != null)
@@ -665,6 +701,9 @@ public class @Inputs : IInputActionCollection, IDisposable
                 @ToggleSound.started += instance.OnToggleSound;
                 @ToggleSound.performed += instance.OnToggleSound;
                 @ToggleSound.canceled += instance.OnToggleSound;
+                @PauseGame.started += instance.OnPauseGame;
+                @PauseGame.performed += instance.OnPauseGame;
+                @PauseGame.canceled += instance.OnPauseGame;
             }
         }
     }
@@ -682,5 +721,6 @@ public class @Inputs : IInputActionCollection, IDisposable
         void OnRoll(InputAction.CallbackContext context);
         void OnAction(InputAction.CallbackContext context);
         void OnToggleSound(InputAction.CallbackContext context);
+        void OnPauseGame(InputAction.CallbackContext context);
     }
 }
